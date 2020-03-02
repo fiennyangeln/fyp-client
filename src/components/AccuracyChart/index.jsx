@@ -22,7 +22,7 @@ export default function AccuracyChart() {
         <XAxis dataKey="x" />
         <YAxis />
         <Tooltip wrapperStyle={{ color: '#123123' }} />
-        <Legend verticalAlign="top"/>
+        <Legend verticalAlign="top" />
         <Line type="monotone" name="Training Error" dataKey="training_error" stroke="#8884d8" dot={false} strokeWidth={2} />
         <Line type="monotone" name="Testing Error" dataKey="testing_error" stroke="#82ca9d" dot={false} strokeWidth={2} />
       </LineChart>

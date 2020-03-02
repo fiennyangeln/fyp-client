@@ -34,12 +34,12 @@ export default function StatisticsPage() {
           <Grid container item xs={12} sm={12} md={12} lg={12} justify="center">
             <Chart />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={6}>
+          <Grid item xs={12} sm={12} md={12} lg={6}>
             <OtherChart title="FSS Score" data={correlation} dataKey="mean_correlation_score_acc" />
 
           </Grid>
 
-          <Grid item xs={12} sm={12} md={6} lg={6}>
+          <Grid item xs={12} sm={12} md={12} lg={6}>
             <OtherChart title="Convolutional Layer Evolution" data={convLayerEvo} dataKey="conv_layer_evo" />
           </Grid>
         </Grid>

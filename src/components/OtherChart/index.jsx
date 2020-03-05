@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 export default function OtherChart(props) {
   const { dataKey, title, data } = props;
-  return (
+  return data && (
     <Grid container direction="column" alignContent="center">
       <Paper>
         <Typography align="center" variant="h5" gutterBottom>{title}</Typography>

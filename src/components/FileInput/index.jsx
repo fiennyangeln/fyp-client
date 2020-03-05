@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/index';
 import FileUploadIcon from 'mdi-react/FileUploadIcon';
@@ -24,8 +25,8 @@ export default function FileInput(props) {
           const file = event.target.files[0];
           const reader = new FileReader();
           reader.readAsText(file);
-          reader.onload = (event) => {
-            props.onFileChange(JSON.parse(event.target.result));
+          reader.onload = (ev) => {
+            props.onFileChange(JSON.parse(ev.target.result));
           };
           reader.onerror = () => {
             props.onFileChange(null);

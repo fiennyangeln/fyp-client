@@ -9,8 +9,9 @@ module.exports = {
     airbnb(),
     react({
       html: {
-        title: 'client'
-      }
+        title: 'Autonomous CNN'
+      },
+      publicPath: '/fyp-client/',
     }),
   ],
 };

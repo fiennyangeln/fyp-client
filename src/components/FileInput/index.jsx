@@ -1,10 +1,11 @@
 import React from 'react';
-import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/index';
+import FileUploadIcon from 'mdi-react/FileUploadIcon';
+import Button from '@material-ui/core/Button';
+import { func } from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   input: {
-    padding: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
 }));
@@ -12,21 +13,34 @@ const useStyles = makeStyles((theme) => ({
 export default function FileInput(props) {
   const classes = useStyles();
   return (
-    <Input
-      className={classes.input}
-      type="file"
-      name="file"
-      onChange={(event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.readAsText(file);
-        reader.onload = function (event) {
-          props.onFileChange(JSON.parse(event.target.result));
-        };
-        reader.onerror = function (event) {
-          props.onFileChange(null);
-        };
-      }}
-    />
+    <div>
+      <input
+        accept=".json"
+        className={classes.input}
+        style={{ display: 'none' }}
+        id="raised-button-file"
+        type="file"
+        onChange={(event) => {
+          const file = event.target.files[0];
+          const reader = new FileReader();
+          reader.readAsText(file);
+          reader.onload = (event) => {
+            props.onFileChange(JSON.parse(event.target.result));
+          };
+          reader.onerror = () => {
+            props.onFileChange(null);
+          };
+        }}
+      />
+      <label htmlFor="raised-button-file">
+        <Button variant="raised" component="span" className={classes.button} startIcon={<FileUploadIcon />}>
+          Upload
+        </Button>
+      </label>
+    </div>
   );
 }
+
+FileInput.propTypes = {
+  onFileChange: func.isRequired,
+};

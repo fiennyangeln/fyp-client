@@ -4,15 +4,24 @@ import {
 } from 'recharts';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import withWidth from '@material-ui/core/withWidth';
+import {
+  string, number, arrayOf, shape,
+} from 'prop-types';
+import { getChartWidth, getChartHeight } from '../../utils/getChartSize';
 
-export default function AccuracyChart(props) {
-  const { data } = props;
+function AccuracyChart(props) {
+  const { data, width } = props;
+  const chartWidth = getChartWidth(width);
+  const chartHeight = getChartHeight(width);
   return data && (
     <Grid item>
       <Paper>
+        <Typography align="center" variant="h5" gutterBottom>Error Graph</Typography>
         <LineChart
-          width={1300}
-          height={250}
+          width={chartWidth}
+          height={chartHeight}
           data={data}
           margin={{
             right: 16, left: 0,
@@ -20,7 +29,7 @@ export default function AccuracyChart(props) {
           syncId="epoch"
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="x" />
+          <XAxis dataKey="x" minTickGap={50} />
           <YAxis />
           <Tooltip wrapperStyle={{ color: '#123123' }} />
           <Legend verticalAlign="top" />
@@ -31,3 +40,18 @@ export default function AccuracyChart(props) {
     </Grid>
   );
 }
+
+AccuracyChart.propTypes = {
+  data: arrayOf(
+    shape({
+      x: number,
+      training_error: number,
+      testing_error: number,
+      mean_correlation_score_acc: number,
+      conv_layer_evo: number,
+    }),
+  ).isRequired,
+  width: string.isRequired,
+};
+
+export default withWidth()(AccuracyChart);

@@ -3,7 +3,7 @@ import Tree from 'react-d3-tree';
 import Slider from '@material-ui/core/Slider';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-
+import { arrayOf, object, number } from 'prop-types';
 
 const PrettoSlider = withStyles({
   root: {
@@ -56,7 +56,6 @@ export default function NetworkGraph(props) {
   const [networkIndex, setNetworkIndex] = useState(0);
   const { networks, numberOfEpoch } = props;
   const onChange = useCallback((event, value) => {
-    const { networks } = props;
     if (!networks) return;
     const epochsLTEvalue = Object.keys(networks).filter((epoch) => (epoch <= value));
     const epochValue = epochsLTEvalue.length ? epochsLTEvalue[epochsLTEvalue.length - 1] : 0;
@@ -84,3 +83,8 @@ export default function NetworkGraph(props) {
     </Paper>
   );
 }
+
+NetworkGraph.propTypes = {
+  networks: arrayOf(object).isRequired,
+  numberOfEpoch: number.isRequired,
+};

@@ -35,9 +35,12 @@ const useStyles = makeStyles((theme) => ({
   appIcon: {
     fill: theme.palette.common.white,
   },
+  graph: {
+    marginTop: 2 * theme.spacing.unit,
+  },
 }));
 
-function StatisticsPage(props) {
+function StatisticsPage() {
   const classes = useStyles();
   const [data, setData] = useState(null);
   const theme = useTheme();
@@ -75,19 +78,19 @@ function StatisticsPage(props) {
           numberOfEpoch={data ? data.lineChartData.length : 0}
         />
         <Grid container justify="center">
-          <Grid container item xs={12} sm={12} md={12} lg={12} justify="center">
+          <Grid container item xs={12} sm={12} md={12} lg={12} justify="center" className={classes.graph}>
             <Chart
               data={data && data.lineChartData ? data.lineChartData : null}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6}>
+          <Grid item xs={12} sm={12} md={12} lg={12} className={classes.graph}>
             <OtherChart
               title="FSS Score"
               data={data && data.lineChartData ? data.lineChartData : null}
               dataKey="mean_correlation_score_acc"
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6}>
+          <Grid item xs={12} sm={12} md={12} lg={12} className={classes.graph}>
             <OtherChart
               title="Convolutional Layer Evolution"
               data={data && data.lineChartData ? data.lineChartData : null}

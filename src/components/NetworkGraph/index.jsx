@@ -54,8 +54,10 @@ const useStyles = makeStyles((theme) => ({
 export default function NetworkGraph(props) {
   const classes = useStyles();
   const [networkIndex, setNetworkIndex] = useState(0);
+  const [epochNumber, setEpochNumber] = useState(20);
   const { networks, numberOfEpoch } = props;
   const onChange = useCallback((event, value) => {
+    setEpochNumber(value);
     if (!networks) return;
     const epochsLTEvalue = Object.keys(networks).filter((epoch) => (epoch <= value));
     const epochValue = epochsLTEvalue.length ? epochsLTEvalue[epochsLTEvalue.length - 1] : 0;
@@ -77,7 +79,7 @@ export default function NetworkGraph(props) {
         onChangeCommitted={onChange}
         valueLabelDisplay="auto"
         aria-label="pretto slider"
-        defaultValue={20}
+        value={epochNumber}
         max={numberOfEpoch}
       />
     </Paper>

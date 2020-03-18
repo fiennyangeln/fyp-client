@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useCallback, useState } from 'react';
 import Tree from 'react-d3-tree';
 import Slider from '@material-ui/core/Slider';
@@ -122,12 +123,12 @@ export default function NetworkGraph(props) {
   return (
     <Paper variant="outlined" classes={{ root: classes.root }}>
       <div id="treeWrapper" style={{ width: '100%', height: '80vh' }}>
-            <Tree
-              separation={{ siblings: 0.5, nonSiblings: 1.5 }}
-              data={networks[networkIndex]}
-              collapsible={false}
-              nodeSvgShape={svgSquare}
-            />
+        <Tree
+          separation={{ siblings: 0.5, nonSiblings: 1.5 }}
+          data={networks[networkIndex]}
+          collapsible={false}
+          nodeSvgShape={svgSquare}
+        />
       </div>
       <Grid container alignItems="center">
         <Grid item>

@@ -9,6 +9,12 @@ const useStyles = makeStyles((theme) => ({
   input: {
     marginRight: theme.spacing.unit,
   },
+  appIcon: {
+    fill: theme.palette.common.white,
+  },
+  button: {
+    color: theme.palette.common.white,
+  }
 }));
 
 export default function FileInput(props) {
@@ -34,7 +40,14 @@ export default function FileInput(props) {
         }}
       />
       <label htmlFor="raised-button-file">
-        <Button variant="raised" component="span" className={classes.button} startIcon={<FileUploadIcon />}>
+        <Button
+          variant="raised"
+          component="span"
+          className={classes.button}
+          startIcon={
+            <FileUploadIcon className={classes.appIcon} />
+        }
+        >
           Upload
         </Button>
       </label>

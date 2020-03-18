@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     color: theme.palette.common.white,
-  }
+  },
 }));
 
 export default function FileInput(props) {

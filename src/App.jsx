@@ -9,7 +9,7 @@ import theme from './theme';
 import ToggleThemeContext from './utils/ToggleTheme';
 
 const App = () => {
-  const [themeType, setThemeType] = useState('dark');
+  const [themeType, setThemeType] = useState('light');
   return (
     <div className="App">
       <ThemeProvider theme={themeType === 'dark' ? theme.darkTheme : theme.lightTheme}>

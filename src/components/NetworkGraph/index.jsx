@@ -118,19 +118,16 @@ export default function NetworkGraph(props) {
     }
   }, isPlaying ? 500 : null);
 
-  // if (!networks || !(networkIndex in networks)) return null;
+  if (!networks || !(networkIndex in networks)) return null;
   return (
     <Paper variant="outlined" classes={{ root: classes.root }}>
       <div id="treeWrapper" style={{ width: '100%', height: '80vh' }}>
-        {(!networks || !(networkIndex in networks)) ? null
-          : (
             <Tree
               separation={{ siblings: 0.5, nonSiblings: 1.5 }}
               data={networks[networkIndex]}
               collapsible={false}
               nodeSvgShape={svgSquare}
             />
-          )}
       </div>
       <Grid container alignItems="center">
         <Grid item>

@@ -29,7 +29,6 @@ export default function Documentation(props) {
         </IconButton>
       </DialogTitle>
       <DialogContent dividers>
-        <Typography />
         <Typography gutterBottom>
           Autonomous CNN is a data-driven method to learn CNN architecture. It has been implemented
           to solve image classification problem on several widely used datasets, such as MNIST,

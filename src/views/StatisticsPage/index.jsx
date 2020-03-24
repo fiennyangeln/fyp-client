@@ -16,6 +16,7 @@ import OtherChart from '../../components/OtherChart';
 import FileInput from '../../components/FileInput';
 import ToggleThemeContext from '../../utils/ToggleTheme';
 import { THEME } from '../../theme';
+import Documentation from '../../components/Documentation';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 function StatisticsPage() {
   const classes = useStyles();
   const [data, setData] = useState(null);
+  const [isDocumentationOpen, setIsDocumentationOpen] = useState(false);
   const theme = useTheme();
   const setTheme = useContext(ToggleThemeContext);
   return (
@@ -64,7 +66,7 @@ function StatisticsPage() {
             </IconButton>
           </Tooltip>
           <Tooltip placement="bottom" title="Documentation">
-            <IconButton>
+            <IconButton onClick={() => { setIsDocumentationOpen(true); }}>
               <BookOpenPageVariantIcon className={classes.appIcon} />
             </IconButton>
           </Tooltip>
@@ -73,6 +75,10 @@ function StatisticsPage() {
       <main
         className={classes.container}
       >
+        <Documentation
+          open={isDocumentationOpen}
+          onClose={() => { setIsDocumentationOpen(false); }}
+        />
         <NetworkGraph
           networks={data && data.networkData ? data.networkData : null}
           numberOfEpoch={data ? data.lineChartData.length : 0}
